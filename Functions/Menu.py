@@ -1,26 +1,33 @@
 import pygame,time,random
 
 
+
 from Functions.simple_functions import *
+pygame.init()
+pygame.mixer.music.play(-1)
+music=True
+
 main_char=pygame.transform.scale(main_char,(150,250))
 clock=pygame.time.Clock() 
 def options_loop():
-
     options = True
     menu = False 
-
+    
+    
     while options:
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 quit_all()
+            print(music)
             gameDisplay.fill(black)
             textfont=pygame.font.Font('freesansbold.ttf',30)
             textsurf, textrect = text_objects('Project Enigma',textfont,white)
-            textrect.center = ((display_width*0.5),(display_height*0.3))
+            textrect.center = ((display_width*0.5),(display_height*0.2))
             gameDisplay.blit(textsurf,textrect)
 
             rectan_button('Back',250,450,300,100,green,green_bright,menu_loop)
             rectan_button('X',700,50,30,30,red,red_bright,quit_all)
+            rectan_button('Stop Music',250,250,200,100,green,green_bright,pause_music)
             pygame.display.update()
             clock.tick(15)
 
@@ -29,8 +36,8 @@ def menu_loop():
     from Enigma import game_loop 
     options = False
     menu = True 
-
     while menu:
+        
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 quit_all()

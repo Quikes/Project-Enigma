@@ -1,6 +1,6 @@
 import pygame,time,random #tam wszystko co sie moze przydac  #sys,os,math moze potem
 
-
+pygame.init()
 
 
 
@@ -9,6 +9,8 @@ import pygame,time,random #tam wszystko co sie moze przydac  #sys,os,math moze p
 display_width = 800
 display_height = 600
 gameDisplay = pygame.display.set_mode((display_width,display_height))
+pygame.mixer.music.load('.\Functions\sounds\pirate.wav')
+
 
 main_char=pygame.image.load('.\Functions\\textures\\main_char\\main_front0.png')
 pygame.init()
@@ -24,6 +26,15 @@ brown = (218,165,32)
 
 
 
+def pause_music():
+    """pauzuje muzyke, uzywa Menu.music"""
+    from Functions import Menu
+    if Menu.music == False:
+        pygame.mixer.music.unpause()
+        Menu.music = True
+    else:
+        pygame.mixer.music.pause()
+        Menu.music = False
 def quit_all():
     """wylacza pygame i pythona, przydatne gdy chcemy wyslac do przycisku EXIT jedną akcje, a potrzebujemy wykonac te obie.
     w środku 'pygame.quit' oraz 'quit'"""

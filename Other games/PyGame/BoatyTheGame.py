@@ -4,6 +4,7 @@ import random
 import os
 
 pygame.init()
+
 crash_sound = pygame.mixer.Sound('crash.wav')
 pygame.mixer.music.load('pirate.wav')
 

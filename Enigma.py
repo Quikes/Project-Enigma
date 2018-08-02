@@ -17,6 +17,7 @@ clock=pygame.time.Clock()
 
 
 def game_loop():
+    
     menu = False
     GameExit = False
     while not GameExit:
