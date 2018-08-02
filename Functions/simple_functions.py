@@ -1,19 +1,14 @@
 import pygame,time,random #tam wszystko co sie moze przydac  #sys,os,math moze potem
 
 pygame.init()
-
-
-
-
 #Rozmiar Okna Gry do okreslania rozmiaru okna gry oraz polozenia buttonow itp czasem przydatne
 display_width = 800
 display_height = 600
 gameDisplay = pygame.display.set_mode((display_width,display_height))
+
 pygame.mixer.music.load('.\Functions\sounds\pirate.wav')
 
-
 main_char=pygame.image.load('.\Functions\\textures\\main_char\\main_front0.png')
-pygame.init()
 #Colory
 black = (0,0,0)
 white = (255,255,255)
@@ -23,8 +18,6 @@ blue = (0,0,255)
 green = (0,150,0)
 green_bright = (0 ,255, 0) 
 brown = (218,165,32) 
-
-
 
 def pause_music():
     """pauzuje muzyke, uzywa Menu.music"""
@@ -40,7 +33,6 @@ def quit_all():
     w środku 'pygame.quit' oraz 'quit'"""
     pygame.quit
     quit()
-
 
 def text_objects(text,font,color):
     textsurface = font.render(text,True, color, None)    
@@ -60,21 +52,17 @@ def rectan_button(msg,x,y,w,h,ic=green,ac=green_bright,action=None,size=20,font=
         if click[0]==1 and action!=None:
             #sleep zeby sie nie wcisnely 2 przyciski jak np. wychodzisz z opcji, a w miejscu przycisku 'back' w glownym menu jest 'start'
             time.sleep(0.1)
-            action()
-            
-        
-            
-            
+            action() 
     else:
         pygame.draw.rect(gameDisplay,ic,(x,y,w,h)) #rysuje  ciemny prostokat, jesli a nie jest prawdą
         
-        # tutaj tworzy sie napis na srodku ekranu. 
-        # mozna dorzucic opcje wyboru 
+
+    # tutaj tworzy sie napis na srodku ekranu. 
+    # mozna dorzucic opcje wyboru 
     textfont = pygame.font.Font('freesansbold.ttf',20)
     textsurf,textrect = text_objects(msg,textfont,black)
     textrect.center = ((x+(w/2)),(y+(h/2)))
     gameDisplay.blit(textsurf,textrect)
-
 
 def message_display(text,x,y,color,font='freesansbold.ttf',size=30):
     "Wyświetla napis na ekranie np. game over itp."

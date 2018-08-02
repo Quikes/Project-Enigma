@@ -4,17 +4,12 @@ import random
 import os
 import sys
 
-
-
 from Functions.simple_functions import *
 from Functions.Menu import menu_loop
-
 
 pygame.init()
 pygame.display.set_caption('Project Enigma')
 clock=pygame.time.Clock() 
-
-
 
 def game_loop():
     
@@ -31,10 +26,8 @@ def game_loop():
         
         gameDisplay.blit(main_char,(display_width*0.4,display_height*(0.05)))
         pygame.display.update()
-                
-                
+                   
         clock.tick(60)
-
 menu_loop()
 game_loop()
 

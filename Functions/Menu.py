@@ -1,8 +1,6 @@
 import pygame,time,random
-
-
-
 from Functions.simple_functions import *
+
 pygame.init()
 pygame.mixer.music.play(-1)
 music=True
@@ -13,12 +11,10 @@ def options_loop():
     options = True
     menu = False 
     
-    
     while options:
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 quit_all()
-            print(music)
             gameDisplay.fill(black)
             textfont=pygame.font.Font('freesansbold.ttf',30)
             textsurf, textrect = text_objects('Project Enigma',textfont,white)
@@ -30,7 +26,6 @@ def options_loop():
             rectan_button('Stop Music',250,250,200,100,green,green_bright,pause_music)
             pygame.display.update()
             clock.tick(15)
-
 def menu_loop():
     #bez tegp się zapętla czy cos jak najpierw importuje game_loop globalnie, bo w Enigmie uzyty jest menu_loop czy cos takiego idk ;/
     from Enigma import game_loop 
