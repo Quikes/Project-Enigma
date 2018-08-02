@@ -25,6 +25,8 @@ brown = (218,165,32)
 
 
 def quit_all():
+    """wylacza pygame i pythona, przydatne gdy chcemy wyslac do przycisku EXIT jedną akcje, a potrzebujemy wykonac te obie.
+    w środku 'pygame.quit' oraz 'quit'"""
     pygame.quit
     quit()
 
@@ -45,7 +47,10 @@ def rectan_button(msg,x,y,w,h,ic=green,ac=green_bright,action=None,size=20,font=
         pygame.draw.rect(gameDisplay,ac,(x,y,w,h))  #rysuje  jasniejszy prostokąt, wydaje sie ze podswietlony, gdy myszka na nim.
         
         if click[0]==1 and action!=None:
+            #sleep zeby sie nie wcisnely 2 przyciski jak np. wychodzisz z opcji, a w miejscu przycisku 'back' w glownym menu jest 'start'
+            time.sleep(0.1)
             action()
+            
         
             
             

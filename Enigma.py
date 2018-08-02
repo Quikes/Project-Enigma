@@ -9,10 +9,10 @@ import sys
 from Functions.simple_functions import *
 from Functions.Menu import menu_loop
 
+
 pygame.init()
 pygame.display.set_caption('Project Enigma')
 clock=pygame.time.Clock() 
-  
 
 
 
@@ -24,10 +24,11 @@ def game_loop():
             if event.type == pygame.QUIT:
                 pygame.quit()
                 quit()
-        #message_display(text,x,y,color,font='freesansbold.ttf',size=30)
+        #message_display(text,x,y,color,font='freesansbold.ttf',size=30) 
         gameDisplay.fill(blue)
-        message_display("Hehe tu nic nie ma",(display_width*0.6),(display_height*0.5),green,font='freesansbold.ttf')
+        #message_display("Hehe tu nic nie ma",(display_width*0.6),(display_height*0.5),green) //// cos sie buguje mi tu :( jak nie bylo game menu loopa to dzialalo xD
         
+        gameDisplay.blit(main_char,(display_width*0.4,display_height*(0.05)))
         pygame.display.update()
                 
                 
