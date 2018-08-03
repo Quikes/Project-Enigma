@@ -21,6 +21,8 @@ def game_loop():
                 pygame.quit()
                 quit()
         #message_display(text,x,y,color,font='freesansbold.ttf',size=30) 
+
+        
         gameDisplay.fill(blue)
         message_display("Hehe tu nic nie ma",(display_width*0.6),(display_height*0.5),green) 
         
