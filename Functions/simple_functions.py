@@ -21,13 +21,12 @@ blue = (0,0,255)
 green = (0,150,0)
 green_bright = (0 ,255, 0) 
 brown = (218,165,32) 
-def set_char():
-    def char1():
-        main_character = char_img0
-    def char2():
-        main_character = char_img1
-    def char3():
-        main_character = char_img2
+def char1():
+    main_character = char_img0
+def char2():
+    main_character = char_img1
+def char3():
+    main_character = char_img2
     
 def pause_music():
     """pauzuje muzyke, uzywa Menu.music"""

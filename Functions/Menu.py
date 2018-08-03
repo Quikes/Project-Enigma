@@ -22,9 +22,9 @@ def pick_char():
             gameDisplay.blit(textsurf,textrect)
             
             rectan_button('Back',display_width*0.35,display_height*0.8,200,100,green,green_bright,menu_loop)
-            rectan_button('char1',display_width*0.2,display_height*0.5,100,50,green,green_bright,set_char.char1)
-            rectan_button('char2',display_width*0.4,display_height*0.5,100,50,green,green_bright,set_char.char2)
-            rectan_button('char3',display_width*0.6,display_height*0.5,100,50,green,green_bright,set_char.char3)
+            rectan_button('char1',display_width*0.2,display_height*0.5,100,50,green,green_bright,char1)
+            rectan_button('char2',display_width*0.4,display_height*0.5,100,50,green,green_bright,char2)
+            rectan_button('char3',display_width*0.6,display_height*0.5,100,50,green,green_bright,char3)
 
             gameDisplay.blit(main_character,(display_width*0.4,display_height*(0.05)))
             pygame.display.update()
