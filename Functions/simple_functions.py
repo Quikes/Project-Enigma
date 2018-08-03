@@ -6,9 +6,12 @@ display_width = 800
 display_height = 600
 gameDisplay = pygame.display.set_mode((display_width,display_height))
 
-pygame.mixer.music.load('.\Functions\sounds\pirate.wav')
+pygame.mixer.music.load('./Functions/sounds/pirate.wav')
 
-main_char=pygame.image.load('.\Functions\\textures\\main_char\\main_front0.png')
+char_img0=pygame.image.load('./Functions/textures/main_char/main_front0.png')
+char_img1=pygame.image.load('./Functions/textures/main_char/main_front1.png')
+char_img2=pygame.image.load('./Functions/textures/main_char/main_front2.png')
+main_character = char_img0
 #Colory
 black = (0,0,0)
 white = (255,255,255)
@@ -18,7 +21,13 @@ blue = (0,0,255)
 green = (0,150,0)
 green_bright = (0 ,255, 0) 
 brown = (218,165,32) 
-
+def char1():
+    main_character = char_img0
+def char2():
+    main_character = char_img1
+def char3():
+    main_character = char_img2
+    
 def pause_music():
     """pauzuje muzyke, uzywa Menu.music"""
     from Functions import Menu
@@ -37,7 +46,7 @@ def quit_all():
 def text_objects(text,font,color):
     textsurface = font.render(text,True, color, None)    
     return textsurface, textsurface.get_rect()  
-def rectan_button(msg,x,y,w,h,ic=green,ac=green_bright,action=None,size=20,font='freesansbold.ttf'): 
+def rectan_button(msg,x,y,w=100,h=100,ic=green,ac=green_bright,action=None,size=20,font='freesansbold.ttf'): 
     """Funckja bierze wiadomosc (msg - string) na przycisku , wymiary startowe lewego gornego rogu przycisku (x i y)
     szerokosc i dlugosc (w i h), color nieaktywny(ic=inactive color) i aktywny(po najechaniu(ac)) oraz akcje(action - jakas funkcja) ktora ma sie wykonac)
     mozna wybrac czcionke i jej wielkosc """
