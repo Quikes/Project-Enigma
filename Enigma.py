@@ -10,7 +10,7 @@ from Functions.Menu import menu_loop
 pygame.init()
 pygame.display.set_caption('Project Enigma')
 clock=pygame.time.Clock() 
-
+#dodałem koentarz
 def game_loop():
     
     menu = False
