@@ -6,9 +6,9 @@ display_width = 800
 display_height = 600
 gameDisplay = pygame.display.set_mode((display_width,display_height))
 
-pygame.mixer.music.load('.\Functions\sounds\pirate.wav')
+pygame.mixer.music.load('./Functions/sounds/pirate.wav')
 
-main_char=pygame.image.load('.\Functions\\textures\\main_char\\main_front0.png')
+main_char=pygame.image.load('./Functions/textures/main_char/main_front0.png')
 #Colory
 black = (0,0,0)
 white = (255,255,255)

@@ -1,7 +1,7 @@
 import pygame
 import time
 import random
-import os
+
 import sys
 
 from Functions.simple_functions import *
@@ -22,7 +22,7 @@ def game_loop():
                 quit()
         #message_display(text,x,y,color,font='freesansbold.ttf',size=30) 
         gameDisplay.fill(blue)
-        #message_display("Hehe tu nic nie ma",(display_width*0.6),(display_height*0.5),green) //// cos sie buguje mi tu :( jak nie bylo game menu loopa to dzialalo xD
+        message_display("Hehe tu nic nie ma",(display_width*0.6),(display_height*0.5),green) 
         
         gameDisplay.blit(main_char,(display_width*0.4,display_height*(0.05)))
         pygame.display.update()
