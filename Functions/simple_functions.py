@@ -1,4 +1,9 @@
-import pygame,time,random #tam wszystko co sie moze przydac  #sys,os,math moze potem
+import pygame,time,random,sys #tam wszystko co sie moze przydac  #sys,os,math moze potem
+
+
+
+
+
 
 pygame.init()
 #Rozmiar Okna Gry do okreslania rozmiaru okna gry oraz polozenia buttonow itp czasem przydatne
@@ -11,7 +16,7 @@ pygame.mixer.music.load('./Functions/sounds/pirate.wav')
 char_img0=pygame.image.load('./Functions/textures/main_char/main_front0.png')
 char_img1=pygame.image.load('./Functions/textures/main_char/main_front1.png')
 char_img2=pygame.image.load('./Functions/textures/main_char/main_front2.png')
-main_character = char_img0
+
 #Colory
 black = (0,0,0)
 white = (255,255,255)
@@ -21,13 +26,30 @@ blue = (0,0,255)
 green = (0,150,0)
 green_bright = (0 ,255, 0) 
 brown = (218,165,32) 
-def char1():
-    main_character = char_img0
-def char2():
-    main_character = char_img1
-def char3():
-    main_character = char_img2
+
+x=400
+y=400
+
+
+x_change=0
+y_change=0
+
+cSec=0
+cFrame=0
+FPS=0
+
+def count_fps():
+    global cSec,cFrame,FPS
+    if cSec == time.strftime("%S"):
+        cFrame+=1
+        
+    else:
+        FPS = cFrame
+        cFrame = 0
+        cSec=time.strftime("%S")
+    message_display(str(FPS),(display_width*0.2),(display_height*0.1),green)
     
+
 def pause_music():
     """pauzuje muzyke, uzywa Menu.music"""
     from Functions import Menu
@@ -79,3 +101,106 @@ def message_display(text,x,y,color,font='freesansbold.ttf',size=30):
     textsurf, textrect = text_objects(text,textfont,color)
     textrect.center = ((x),(y))
     gameDisplay.blit(textsurf,textrect)
+
+#Game funkcje
+
+""" 
+def main_char_pos_draw(main_character=char_img0,x=0.5*display_width,y=0.5*display_height):
+    gameDisplay.blit(main_character,(x,y)) """
+
+
+
+            
+
+
+
+
+
+class Platform(object):
+    def __init__(self,x,y,w,h,ic):
+        self.x = x
+        self.y = y
+        self.w = w
+        self.h = h
+        self.ic=black
+        Platform.h=h
+        Platform.y=y
+        Platform.x=x
+        Platform.w=w
+    
+    def draw(self):
+        pygame.draw.rect(gameDisplay,self.ic,(self.x,self.y,self.w,self.h))
+    
+
+
+class Player(Platform):
+    def __init__(self,x,y,main_character):
+        self.x = x
+        self.y = y
+        self.main_character = main_character
+        self.jump=False
+        self.event=None
+        self.direction=[0,0]
+        self.speed=6
+        self.gravity=3
+        self.m=2
+        self.v=7
+
+    def draw(self):
+        gameDisplay.blit(self.main_character,(self.x,self.y))
+    def update(self):
+        self.x += self.speed*self.direction[1]
+        print (self.jump)
+        #self.y += self.speed*self.direction[0]  chodzenie po mapie na przyklad
+        self.y+=self.gravity
+        if self.x > display_width - 40:
+            self.x=display_width -40
+        if self.x< 0:
+            self.x=0
+        if self.y>display_height-50:
+            self.jump=False
+            self.y=display_height-50
+            self.v = 7
+            self.gravity=0
+ 
+        if self.jump:
+            if self.v>0:
+                F= (0.5*self.m*(self.v*self.v))
+            else:
+                F=  -(0.5*self.m*(self.v*self.v))
+            self.y= self.y - F
+            self.v= self.v -0.5
+        a=((self.y-40 > Platform.y  and self.y-40 < Platform.y+35) and  (self.x > Platform.x-30 and self.x < Platform.x + Platform.w))
+        if  a :
+
+            #self.y-40 > Platform.y and 
+            self.y=Platform.y-40
+            self.v=7
+            self.jump=False
+            self.gravity=0
+        else: 
+            gravity=3    
+    def move(self,event):
+        
+        if event.type == pygame.KEYDOWN:
+            if event.key == pygame.K_UP:
+                self.jump=True
+                #self.direction[0]-=1
+            """ elif event.key == pygame.K_DOWN:
+                self.direction[0]+=1 """
+            if event.key == pygame.K_RIGHT:
+                self.direction[1]+=1 
+            elif event.key == pygame.K_LEFT:
+                self.direction[1]-=1
+                
+        if event.type == pygame.KEYUP:
+            #if event.key == pygame.K_UP:
+               # self.direction[0]+=1
+            """ elif event.key == pygame.K_DOWN:
+                self.direction[0]-=1  """
+            if event.key == pygame.K_RIGHT:
+                self.direction[1]-=1
+            elif event.key == pygame.K_LEFT:
+                self.direction[1]+=1         
+        
+            
